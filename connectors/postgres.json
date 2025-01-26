@@ -1,0 +1,22 @@
+{
+  "connector.class":"io.confluent.connect.jdbc.JdbcSourceConnector",
+  "tasks.max":"1",
+  "connection.url":"jdbc:postgresql://postgres:5432/customers?user=postgres-user&password=postgres-pw&useSSL=false",
+  "connection.attempts":"5",
+  "connection.backoff.ms":"50000",
+  "mode":"timestamp",
+  "timestamp.column.name":"updated_at",
+  "topic.prefix":"postgresql-jdbc-bulk-",
+  "table.whitelist": "users",
+  "poll.interval.ms": "200",
+  "producer.override.batch.size": 500,
+  "transforms":"MaskField",
+  "transforms.MaskField.type":"org.apache.kafka.connect.transforms.MaskField$Value",
+  "transforms.MaskField.fields":"private_info",
+  "transforms.MaskField.replacement":"CENSORED",
+
+  "batch.max.rows": 0,
+  "producer.override.linger.ms": 0,
+  "topic.creation.default.compression.type": "gzip",
+  "producer.override.buffer.memory": 0
+}

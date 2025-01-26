@@ -84,7 +84,7 @@
       "pluginVersion": "8.1.6",
       "targets": [
         {
-          "expr": "sum(kafka_connect_worker_connector_total_task_count{instance=~\"$instance\",connector=~\"$connector\"})",
+          "expr": "sum(kafka_connect_worker_connector_total_task_count{})",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -140,7 +140,7 @@
       "pluginVersion": "8.1.6",
       "targets": [
         {
-          "expr": "sum(kafka_connect_worker_connector_running_task_count{instance=~\"$instance\",connector=~\"$connector\"})",
+          "expr": "sum(kafka_connect_worker_connector_running_task_count{})",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -200,7 +200,7 @@
       "pluginVersion": "8.1.6",
       "targets": [
         {
-          "expr": "sum(kafka_connect_worker_connector_paused_task_count{instance=~\"$instance\",connector=~\"$connector\"})",
+          "expr": "sum(kafka_connect_worker_connector_paused_task_count{})",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -261,7 +261,7 @@
       "pluginVersion": "8.1.6",
       "targets": [
         {
-          "expr": "sum(kafka_connect_worker_connector_failed_task_count{instance=~\"$instance\",connector=~\"$connector\"})",
+          "expr": "sum(kafka_connect_worker_connector_failed_task_count{})",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -322,7 +322,7 @@
       "pluginVersion": "8.1.6",
       "targets": [
         {
-          "expr": "sum(kafka_connect_worker_connector_unassigned_task_count{instance=~\"$instance\",connector=~\"$connector\"})",
+          "expr": "sum(kafka_connect_worker_connector_unassigned_task_count{})",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -383,7 +383,7 @@
       "pluginVersion": "8.1.6",
       "targets": [
         {
-          "expr": "sum(kafka_connect_worker_connector_destroyed_task_count{instance=~\"$instance\",connector=~\"$connector\"})",
+          "expr": "sum(kafka_connect_worker_connector_destroyed_task_count{})",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -577,7 +577,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(kafka_connect_worker_connector_running_task_count{instance=~\"$instance\",connector=~\"$connector\"})",
+          "expr": "sum(kafka_connect_worker_connector_running_task_count{})",
           "format": "time_series",
           "hide": false,
           "instant": false,
@@ -587,7 +587,7 @@
           "refId": "A"
         },
         {
-          "expr": "sum(kafka_connect_worker_connector_failed_task_count{instance=~\"$instance\",connector=~\"$connector\"})",
+          "expr": "sum(kafka_connect_worker_connector_failed_task_count{})",
           "format": "time_series",
           "hide": false,
           "instant": false,
@@ -597,7 +597,7 @@
           "refId": "B"
         },
         {
-          "expr": "sum(kafka_connect_worker_connector_paused_task_count{instance=~\"$instance\",connector=~\"$connector\"})",
+          "expr": "sum(kafka_connect_worker_connector_paused_task_count{})",
           "format": "time_series",
           "hide": false,
           "instant": false,
@@ -607,7 +607,7 @@
           "refId": "C"
         },
         {
-          "expr": "sum(kafka_connect_worker_connector_destroyed_task_count{instance=~\"$instance\",connector=~\"$connector\"})",
+          "expr": "sum(kafka_connect_worker_connector_destroyed_task_count{})",
           "format": "time_series",
           "hide": false,
           "instant": false,
@@ -617,7 +617,7 @@
           "refId": "D"
         },
         {
-          "expr": "sum(kafka_connect_worker_connector_unassigned_task_count{instance=~\"$instance\",connector=~\"$connector\"})",
+          "expr": "sum(kafka_connect_worker_connector_unassigned_task_count{})",
           "format": "time_series",
           "hide": false,
           "instant": false,
@@ -1069,7 +1069,7 @@
       ],
       "targets": [
         {
-          "expr": "kafka_connect_app_info{instance=~\"$instance\",start_time_ms!=\"\"}",
+          "expr": "kafka_connect_app_info{,start_time_ms!=\"\"}",
           "format": "table",
           "hide": false,
           "instant": true,
@@ -1078,7 +1078,7 @@
           "refId": "B"
         },
         {
-          "expr": "kafka_connect_app_info{instance=~\"$instance\",version!=\"\"}",
+          "expr": "kafka_connect_app_info{,version!=\"\"}",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1086,7 +1086,7 @@
           "refId": "A"
         },
         {
-          "expr": "sum by (instance) (kafka_connect_worker_connector_count{instance=~\"$instance\"})",
+          "expr": "sum by (instance) (kafka_connect_worker_connector_count{})",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1094,7 +1094,7 @@
           "refId": "C"
         },
         {
-          "expr": "sum by (instance) (kafka_connect_worker_connector_startup_success_total{instance=~\"$instance\"})",
+          "expr": "sum by (instance) (kafka_connect_worker_connector_startup_success_total{})",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1102,7 +1102,7 @@
           "refId": "D"
         },
         {
-          "expr": "sum by (instance) (kafka_connect_worker_connector_startup_failure_total{instance=~\"$instance\"})",
+          "expr": "sum by (instance) (kafka_connect_worker_connector_startup_failure_total{})",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1110,7 +1110,7 @@
           "refId": "E"
         },
         {
-          "expr": "sum by (instance) (kafka_connect_worker_task_count{instance=~\"$instance\"})",
+          "expr": "sum by (instance) (kafka_connect_worker_task_count{})",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1118,7 +1118,7 @@
           "refId": "I"
         },
         {
-          "expr": "sum by (instance) (kafka_connect_worker_task_startup_success_total{instance=~\"$instance\"})",
+          "expr": "sum by (instance) (kafka_connect_worker_task_startup_success_total{})",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1126,7 +1126,7 @@
           "refId": "J"
         },
         {
-          "expr": "sum by (instance) (kafka_connect_worker_task_startup_failure_total{instance=~\"$instance\"})",
+          "expr": "sum by (instance) (kafka_connect_worker_task_startup_failure_total{})",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1578,7 +1578,7 @@
       ],
       "targets": [
         {
-          "expr": "label_replace(label_replace(label_replace(kafka_connect_connector_info{instance=~\"$instance\",connector=~\"$connector\",status!=\"\"}, \"status\", \"1\", \"status\", \"running\"), \"status\", \"2\", \"status\", \"paused\"), \"status\", \"3\", \"status\", \"stopped\")",
+          "expr": "label_replace(label_replace(label_replace(kafka_connect_connector_info{,status!=\"\"}, \"status\", \"1\", \"status\", \"running\"), \"status\", \"2\", \"status\", \"paused\"), \"status\", \"3\", \"status\", \"stopped\")",
           "format": "table",
           "hide": false,
           "instant": true,
@@ -1587,7 +1587,7 @@
           "refId": "I"
         },
         {
-          "expr": "kafka_connect_connector_info{instance=~\"$instance\",connector=~\"$connector\",connector_type!=\"\"}",
+          "expr": "kafka_connect_connector_info{}",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1595,7 +1595,7 @@
           "refId": "A"
         },
         {
-          "expr": "kafka_connect_connector_info{instance=~\"$instance\",connector=~\"$connector\",connector_version!=\"\"}",
+          "expr": "kafka_connect_connector_info{}",
           "format": "table",
           "hide": false,
           "instant": true,
@@ -1604,7 +1604,7 @@
           "refId": "C"
         },
         {
-          "expr": "kafka_connect_connector_info{instance=~\"$instance\",connector=~\"$connector\",connector_class!=\"\"}",
+          "expr": "kafka_connect_connector_info{}",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1612,7 +1612,7 @@
           "refId": "D"
         },
         {
-          "expr": "sum by (connector) (kafka_connect_worker_connector_total_task_count{instance=~\"$instance\",connector=~\"$connector\"})",
+          "expr": "sum by (connector) (kafka_connect_worker_connector_total_task_count{})",
           "format": "table",
           "hide": false,
           "instant": true,
@@ -1621,7 +1621,7 @@
           "refId": "E"
         },
         {
-          "expr": "sum by (connector) (kafka_connect_worker_connector_running_task_count{instance=~\"$instance\",connector=~\"$connector\"})",
+          "expr": "sum by (connector) (kafka_connect_worker_connector_running_task_count{})",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1629,7 +1629,7 @@
           "refId": "F"
         },
         {
-          "expr": "sum by (connector) (kafka_connect_worker_connector_failed_task_count{instance=~\"$instance\",connector=~\"$connector\"})",
+          "expr": "sum by (connector) (kafka_connect_worker_connector_failed_task_count{})",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1637,7 +1637,7 @@
           "refId": "G"
         },
         {
-          "expr": "sum by (connector) (kafka_connect_worker_connector_paused_task_count{instance=~\"$instance\",connector=~\"$connector\"})",
+          "expr": "sum by (connector) (kafka_connect_worker_connector_paused_task_count{})",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1645,7 +1645,7 @@
           "refId": "H"
         },
         {
-          "expr": "sum by (connector) (kafka_connect_worker_connector_destroyed_task_count{instance=~\"$instance\",connector=~\"$connector\"})",
+          "expr": "sum by (connector) (kafka_connect_worker_connector_destroyed_task_count{})",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1653,7 +1653,7 @@
           "refId": "B"
         },
         {
-          "expr": "sum by (connector) (kafka_connect_worker_connector_unassigned_task_count{instance=~\"$instance\",connector=~\"$connector\"})",
+          "expr": "sum by (connector) (kafka_connect_worker_connector_unassigned_task_count{})",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1719,7 +1719,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "rate(kafka_connect_source_task_source_record_poll_total{instance=~\"$instance\",connector=~\"$connector\"}[1m])",
+          "expr": "rate(kafka_connect_source_task_source_record_poll_total{}[1m])",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -1822,7 +1822,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "rate(kafka_connect_source_task_source_record_write_total{instance=~\"$instance\",connector=~\"$connector\"}[1m])",
+          "expr": "rate(kafka_connect_source_task_source_record_write_total{}[1m])",
           "format": "time_series",
           "instant": false,
           "interval": "",

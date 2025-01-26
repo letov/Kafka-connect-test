@@ -26,3 +26,20 @@ jdbc:
 
 jdbc-status:
 	curl localhost:8083/connectors/jdbc-sink/status | jq
+
+postgres:
+	curl -X PUT \
+    -H "Content-Type: application/json" \
+    --data @connectors/jdbc.json \
+    http://localhost:8083/connectors/jdbc-sink/config
+
+postgres-status:
+	curl localhost:8083/connectors/jdbc-sink/status | jq
+
+postgres-pause:
+	curl -X PUT \
+    http://localhost:8083/connectors/jdbc-sink/pause
+
+postgres-resume:
+	curl -X PUT \
+    http://localhost:8083/connectors/jdbc-sink/resume
