@@ -9,14 +9,15 @@
   "topic.prefix":"postgresql-jdbc-bulk-",
   "table.whitelist": "users",
   "poll.interval.ms": "200",
-  "producer.override.batch.size": 500,
   "transforms":"MaskField",
   "transforms.MaskField.type":"org.apache.kafka.connect.transforms.MaskField$Value",
   "transforms.MaskField.fields":"private_info",
   "transforms.MaskField.replacement":"CENSORED",
 
-  "batch.max.rows": 0,
-  "producer.override.linger.ms": 0,
-  "topic.creation.default.compression.type": "gzip",
-  "producer.override.buffer.memory": 0
+  "batch.max.rows": 100,
+
+  "producer.override.batch.size": 30000,
+  "producer.override.linger.ms": 200,
+  "topic.creation.default.compression.type": "snappy",
+  "producer.override.buffer.memory": 33554432
 }
