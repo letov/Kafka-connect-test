@@ -4,3 +4,5 @@
 /.idea/modules.xml
 /.idea/.gitignore
 /.idea/live.iml
+!/kafka-connect/jmx_prometheus_javaagent-0.15.0.jar
+/.idea/vcs.xml
