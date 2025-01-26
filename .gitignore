@@ -1,0 +1,6 @@
+/confluent-hub-components/connect-file-3.9.0.jar
+/confluent-hub-components/kafka-connect-jdbc-10.8.0.jar
+/confluent-hub-components/postgresql-42.4.4.jar
+/.idea/modules.xml
+/.idea/.gitignore
+/.idea/live.iml
