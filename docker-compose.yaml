@@ -35,6 +35,7 @@ services:
 
   kafka-0:
     <<: *kafka-common
+    container_name: kafka-0
     restart: always
     ports:
       - "127.0.0.1:9094:9094"
@@ -73,7 +74,7 @@ services:
       - kafka_2_data:/bitnami/kafka
 
   schema-registry:
-    image: bitnami/schema-registry:7.6
+    image: bitnami/schema-registry:7.8.0
     ports:
       - '8081:8081'
     depends_on:
@@ -166,6 +167,17 @@ services:
       - 3000:3000
     networks:
       - proxynet
+
+
+  redis:
+    image: redis:latest
+    restart: always
+    ports:
+      - "26379:6379"
+    environment:
+      - REDIS_PASSWORD=my-password
+      - REDIS_PORT=6379
+      - REDIS_DATABASES=16
 
 
 networks:

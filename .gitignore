@@ -7,3 +7,6 @@
 /infra/kafka-connect/jmx_prometheus_javaagent-0.15.0.jar
 /.idea/vcs.xml
 /infra/confluent-hub-components/*
+!/.env
+/.idea/.name
+/.idea/kafka-connect.iml
