@@ -6,40 +6,32 @@ up:
 down:
 	$(docker_compose_bin) down -v
 
+plugins:
+	curl localhost:8083/connector-plugins | jq
+
 file:
 	curl -X PUT \
     -H "Content-Type: application/json" \
-    --data @connectors/file-connector.json \
-    http://localhost:8083/connectors/file-stream-sink/config
+    --data @infra/connectors/file.json \
+    http://localhost:8083/connectors/file-sink/config
 
 filejson:
 	curl -X PUT \
     -H "Content-Type: application/json" \
-    --data @connectors/file-json-connector.json \
-    http://localhost:8083/connectors/file-stream-sink-json/config
+    --data @infra/connectors/file-json.json \
+    http://localhost:8083/connectors/file-json-sink/config
 
 jdbc:
 	curl -X PUT \
     -H "Content-Type: application/json" \
-    --data @connectors/jdbc.json \
-    http://localhost:8083/connectors/jdbc-sink/config
+    --data @infra/connectors/jdbc.json \
+    http://localhost:8083/connectors/jdbc-source/config
 
-jdbc-status:
-	curl localhost:8083/connectors/jdbc-sink/status | jq
-
-postgres:
+debezium:
 	curl -X PUT \
     -H "Content-Type: application/json" \
-    --data @connectors/jdbc.json \
-    http://localhost:8083/connectors/jdbc-sink/config
+    --data @infra/connectors/debezium.json \
+    http://localhost:8083/connectors/debezium-source/config
 
-postgres-status:
-	curl localhost:8083/connectors/jdbc-sink/status | jq
-
-postgres-pause:
-	curl -X PUT \
-    http://localhost:8083/connectors/jdbc-sink/pause
-
-postgres-resume:
-	curl -X PUT \
-    http://localhost:8083/connectors/jdbc-sink/resume
+debezium-status:
+	curl localhost:8083/connectors/debezium-source/status | jq
