@@ -10,3 +10,4 @@
 !/.env
 /.idea/.name
 /.idea/kafka-connect.iml
+!/.env
