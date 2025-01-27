@@ -3,6 +3,9 @@
 ## Задание 1. Оптимизация параметров для повышения пропускной способности JDBC Source Connector
 
 Небольшего приростра скорости записи удалось добиться путем изменения параметра batch.size, linger.ms и включения сжатия.
+```
+batch.size = batch.max.rows * record_size_average_in_bytes = 100 * 140b = 14000
+```
 
 | Эксперимент | batch.size | linger.ms | compression.type | buffer.memory | Record Write Rate |
 |-------------|------------|-----------|------------------|---------------|-------------------|
