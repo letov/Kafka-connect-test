@@ -13,6 +13,23 @@ batch.size = batch.max.rows * record_size_average_in_bytes = 100 * 140b = 14000
 | 2           | 14000      | 0         | snappy           | 33554432      | 175               |
 | 3           | 14000      | 200       | snappy           | 33554432      | 179               |
 
+## Задание 2. Создание собственного коннектора для переноса данных из Apache Kafka в Prometheus
+
+Запуск окружения:
+```
+make up
+```
+
+Создание топика:
+```
+make create-topic
+```
+
+Создание коннектора:
+```
+make prometheus
+```
+
 ## Задание 3. Получение лога вывода Debezium PostgresConnector
 
 ```
