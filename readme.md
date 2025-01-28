@@ -15,6 +15,17 @@ batch.size = batch.max.rows * record_size_average_in_bytes = 100 * 140b = 14000
 
 ## Задание 2. Создание собственного коннектора для переноса данных из Apache Kafka в Prometheus
 
+Пример .env файла:
+```
+KAFKA_BOOTSTRAP_SERVERS=127.0.0.1:9094
+TOPIC=metrics
+KAFKA_CONSUMER_PULL_TIMEOUT_MS=100
+KAFKA_CUSTOMER_GROUP_1=consumer_group_1
+KAFKA_SESSION_TIMEOUT_MS=6000
+SCHEMA_REGISTRY_URL=http://127.0.0.1:8081
+REDIS_OPT=redis://default:my-password@localhost:26379/0
+```
+
 Запуск окружения:
 ```
 make up
