@@ -12,28 +12,26 @@ type Processor struct {
 	repo repo.Repo
 }
 
-func (p Processor) Process(l domain.List) (err error) {
+func (p Processor) Process(l domain.List) error {
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
 
-	err = p.processGauge(ctx, l.Alloc)
-	if err != nil {
-		return err
-	}
-	err = p.processGauge(ctx, l.FreeMemory)
-	if err != nil {
-		return err
-	}
-	err = p.processGauge(ctx, l.TotalMemory)
-	if err != nil {
-		return err
-	}
-	err = p.processCount(ctx, l.PollCount)
-	if err != nil {
-		return err
-	}
+	for _, m := range l.Array() {
+		t, err := m.GetType()
+		if err != nil {
+			return err
+		}
 
-	return
+		if t == domain.Gauge {
+			err = p.processGauge(ctx, l.Alloc)
+		} else {
+			err = p.processCount(ctx, l.PollCount)
+		}
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 func (p Processor) processGauge(ctx context.Context, m domain.Metric) error {

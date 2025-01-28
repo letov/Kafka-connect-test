@@ -1,9 +1,14 @@
 package domain
 
-import "encoding/json"
+import (
+	"encoding/json"
+	"errors"
+)
 
 type MType = string
 type MName = string
+
+var NotExistsType = errors.New("type does not exist")
 
 var (
 	Gauge   MType = "gauge"
@@ -24,6 +29,27 @@ type Metric struct {
 	Value       int64  `json:"Value"`
 }
 
+func (m Metric) GetType() (MType, error) {
+	switch m.Name {
+	case Alloc:
+	case FreeMemory:
+	case TotalMemory:
+		return Gauge, nil
+	case PollCount:
+		return Counter, nil
+	}
+	return "", NotExistsType
+}
+
+func GetMetricNames() []MName {
+	return []MName{
+		Alloc,
+		FreeMemory,
+		PollCount,
+		TotalMemory,
+	}
+}
+
 func (m Metric) Bytes() ([]byte, error) {
 	return json.Marshal(m)
 }
@@ -39,4 +65,13 @@ type List struct {
 	FreeMemory  Metric `json:"FreeMemory"`
 	PollCount   Metric `json:"PollCount"`
 	TotalMemory Metric `json:"TotalMemory"`
+}
+
+func (l List) Array() []Metric {
+	return []Metric{
+		l.Alloc,
+		l.FreeMemory,
+		l.PollCount,
+		l.TotalMemory,
+	}
 }

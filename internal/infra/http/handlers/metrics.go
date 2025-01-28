@@ -39,40 +39,15 @@ func (h *MetricsHandler) getAllMetrics(ctx context.Context) ([]domain.Metric, er
 		err  error
 	)
 
-	v, err = h.getMetric(ctx, domain.Alloc)
-	if err != nil {
-		if !errors.Is(err, repo.NotExistsKey) {
-			return nil, err
+	for _, name := range domain.GetMetricNames() {
+		v, err = h.getMetric(ctx, name)
+		if err != nil {
+			if !errors.Is(err, repo.NotExistsKey) {
+				return nil, err
+			}
+		} else {
+			data = append(data, v)
 		}
-	} else {
-		data = append(data, v)
-	}
-
-	v, err = h.getMetric(ctx, domain.FreeMemory)
-	if err != nil {
-		if !errors.Is(err, repo.NotExistsKey) {
-			return nil, err
-		}
-	} else {
-		data = append(data, v)
-	}
-
-	v, err = h.getMetric(ctx, domain.PollCount)
-	if err != nil {
-		if !errors.Is(err, repo.NotExistsKey) {
-			return nil, err
-		}
-	} else {
-		data = append(data, v)
-	}
-
-	v, err = h.getMetric(ctx, domain.TotalMemory)
-	if err != nil {
-		if !errors.Is(err, repo.NotExistsKey) {
-			return nil, err
-		}
-	} else {
-		data = append(data, v)
 	}
 
 	return data, nil
